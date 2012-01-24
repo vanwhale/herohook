@@ -5,6 +5,7 @@ require 'herohook/airbrake'
 require 'herohook/pivotal_tracker'
 
 require 'active_support/inflector'
+require 'erb'
 
 module Herohook
   extend self
@@ -31,7 +32,7 @@ module Herohook
   end
   
   def yaml
-    YAML.load_file(File.join("config", "herohook.yml"))
+    YAML::load(ERB.new(IO.read(File.join('config', 'herohook.yml'))).result)
   end
   
   def app

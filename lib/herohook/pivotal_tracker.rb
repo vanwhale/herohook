@@ -8,10 +8,10 @@ module Herohook
     def perform
       ::PivotalTracker::Client.token = config["api_token"]
       ::PivotalTracker::Client.use_ssl = true
-      ::Pony.mail(
+      raise ::Pony.mail(
         :to => config["mail_to"],
         :subject => config["mail_subject"],
-        :body => [config["mail_body"], mail_body].join(double_break),
+        :body => [config["mail_body"].gsub(/%{app}/, app), stories_body].join(double_break),
         :via => :smtp,
         :via_options => {
           :address => config["smtp_address"],
@@ -21,10 +21,10 @@ module Herohook
           :password => config["smtp_password"],
           :authentication => :plain,
           :enable_starttls_auto => true
-        })
+        }).inspect
     end
     
-    def mail_body
+    def stories_body
       stories.map{|story| [story.name, story.url, story.description].join(?\n) }.join(double_break)
     end
     
