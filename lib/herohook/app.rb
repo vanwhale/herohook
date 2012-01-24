@@ -5,7 +5,8 @@ module Herohook
   class App < Sinatra::Base
   
     get '/herohook' do
-      Herohook.perform(params)
+      # Herohook.perform(params)
+      render 'herohook'
     end
   end
 end

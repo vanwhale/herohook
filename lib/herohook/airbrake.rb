@@ -5,7 +5,7 @@ module Herohook
   class Airbrake < Base
     
     def perform
-      Airbrake.configure do |airbrake_config|
+      ::Airbrake.configure do |airbrake_config|
         airbrake_config.api_key = config["api_key"]
       end
       ::AirbrakeTasks.deploy(
