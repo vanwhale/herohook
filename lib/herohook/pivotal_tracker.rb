@@ -8,8 +8,9 @@ module Herohook
     def perform
       ::PivotalTracker::Client.token = config["api_token"]
       ::PivotalTracker::Client.use_ssl = true
-      raise ::Pony.mail(
+      ::Pony.mail(
         :to => config["mail_to"],
+        :from => config["mail_from"],
         :subject => config["mail_subject"],
         :body => [config["mail_body"].gsub(/%{app}/, app), stories_body].join(double_break),
         :via => :smtp,
