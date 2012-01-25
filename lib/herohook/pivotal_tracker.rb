@@ -38,7 +38,7 @@ module Herohook
     end
     
     def story_ids
-      params[:git_log].scan(/\d+/)
+      @story_ids ||= params[:git_log].scan(/\d{8}+/).uniq
     end
     
     def double_break
