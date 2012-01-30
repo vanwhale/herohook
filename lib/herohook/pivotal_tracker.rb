@@ -11,8 +11,7 @@ module Herohook
       config["emails"].each_value do |email_config|
         mail_settings = email_config.merge(config["mail_settings"])
         mail_settings[:body] << double_break << stories_body(email_config["pivotal_tracker_options"])
-        puts mail_settings.inspect
-        puts ::Pony.mail(mail_settings).inspect
+        ::Pony.mail(mail_settings)
       end
     end
     
