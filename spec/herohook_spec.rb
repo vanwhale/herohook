@@ -35,11 +35,6 @@ describe Herohook do
       end
     end
   end
-  
-  it "#yaml" do
-    YAML.should_receive(:load_file).with("config/herohook.yml")
-    Herohook.yaml
-  end
 
   it "#app" do
     Herohook.app.should == 'app'

@@ -12,6 +12,6 @@ describe Herohook::App do
   
   it "should perform herohook" do
     Herohook.should_receive(:perform)
-    get '/herohook'
+    post '/herohook'
   end
 end
