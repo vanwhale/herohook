@@ -21,7 +21,6 @@ module Herohook
     
     def stories(options)
       default_options = {:search => ["id", story_ids.join(",")].join(":")}
-      options.each
       project.stories.all(default_options.merge(options))
     end
     
