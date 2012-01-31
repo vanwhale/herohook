@@ -10,7 +10,7 @@ module Herohook
       ::PivotalTracker::Client.use_ssl = true
       config["emails"].each_value do |email_config|
         mail_settings = email_config.merge(config["mail_settings"])
-        mail_settings[:body] << double_break << stories_body(email_config["pivotal_tracker_options"])
+        mail_settings[:body] = mail_settings[:body].gsub(/%{app}/, app) << double_break << stories_body(email_config["pivotal_tracker_options"])
         ::Pony.mail(mail_settings)
       end
     end
