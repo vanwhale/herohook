@@ -9,7 +9,7 @@ module Herohook
         airbrake_config.api_key = config["api_key"]
       end
       ::AirbrakeTasks.deploy(
-        :rails_env => app,
+        :rails_env => config["environment"],
         :scm_revision => params[:head],
         :scm_repository => config["repository_url"],
         :local_username => params[:user]
