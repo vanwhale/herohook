@@ -2,6 +2,8 @@ source :rubygems
 
 gemspec
 
+gem "heroku"
+
 group :test do
   gem "i18n"
   gem "rake"
