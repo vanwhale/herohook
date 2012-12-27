@@ -3,7 +3,6 @@ require 'herohook/app'
 require 'herohook/base'
 require 'herohook/airbrake'
 require 'herohook/pivotal_tracker'
-require 'herohook/memcache'
 
 require 'active_support/inflector'
 require 'erb'
